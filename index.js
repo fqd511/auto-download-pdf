@@ -3,7 +3,7 @@
  * Automates login, navigation, filtering, and PDF downloads
  */
 
-require('dotenv').config({ path: './env' });
+require('dotenv').config({ path: './.env' });
 const { chromium } = require('playwright');
 const { performLogin } = require('./utils/loginHandler');
 const { navigateToFilteredPage, getFilterCombinations, clickNthItem } = require('./utils/navigationHandler');

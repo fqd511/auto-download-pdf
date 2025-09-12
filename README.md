@@ -16,7 +16,7 @@ npm run install-browsers
 ```
 
 3. Configure environment variables:
-Edit `env` with real credentials:
+Edit `.env` with real credentials:
 ```
 USERNAME=your_real_email@example.com
 PASSWORD=your_real_password
@@ -63,7 +63,7 @@ npm run dev
 auto-download-pdf/
 ├── index.js                 # Main entry
 ├── package.json             # Project config
-├── env                      # Environment variables
+├── .env                     # Environment variables
 ├── downloads/               # PDF output
 └── utils/
     ├── dateCalculator.js    # Date utilities

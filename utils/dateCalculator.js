@@ -8,7 +8,7 @@ const { createLogger } = require('./logger');
 const log = createLogger('date');
 
 // Load environment variables
-require('dotenv').config({ path: '../env' });
+require('dotenv').config({ path: '../.env' });
 
 /**
  * Calculate working days between two dates (excluding weekends)
