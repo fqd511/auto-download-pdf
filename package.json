@@ -1,0 +1,19 @@
+ {
+  "name": "auto-download-pdf",
+  "version": "1.0.0",
+  "description": "Automated PDF download tool using Playwright",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "install-browsers": "npx playwright install"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.0"
+  },
+  "keywords": ["playwright", "automation", "pdf", "download"],
+  "author": "",
+  "license": "MIT"
+}
