@@ -7,6 +7,9 @@
 const { createLogger } = require('./logger');
 const log = createLogger('date');
 
+// Load environment variables
+require('dotenv').config({ path: '../env' });
+
 /**
  * Calculate working days between two dates (excluding weekends)
  * @param {Date} startDate - Start date
@@ -30,12 +33,14 @@ function calculateWorkingDays(startDate, endDate) {
 }
 
 /**
- * Get the N value based on working days since 2025-09-10
+ * Get the N value based on working days since base date from environment
  * @returns {number} The calculated N value
  */
 function getNValue() {
-    // Base date comment was mismatched; ensure correct date (2025-09-10)
-    const baseDate = new Date(2025, 8, 10); // month is 0-indexed
+    // Get base date from environment variable
+    const baseDateStr = process.env.BASE_DATE || '2025-09-10';
+    const [year, month, day] = baseDateStr.split('-').map(Number);
+    const baseDate = new Date(year, month - 1, day); // month is 0-indexed
     const currentDate = new Date();
     
     const workingDays = calculateWorkingDays(baseDate, currentDate);
