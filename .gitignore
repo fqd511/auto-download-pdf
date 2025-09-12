@@ -10,7 +10,7 @@ downloads/
 
 # Environment variables (keep only template)
 .env
-# env
+env
 !env.example
 
 # Logs
