@@ -28,7 +28,11 @@ async function downloadPDF(page, grade, subject, downloadDir) {
         // Generate filename and create date-based subdirectory
         const currentDate = new Date();
         const dateString = currentDate.toISOString().split('T')[0];
-        const filename = `${grade}-${subject}-${dateString}.pdf`;
+        // Append id from current page URL at the end of file name
+        const urlObj = new URL(page.url());
+        const idParam = urlObj.searchParams.get('id');
+        const idSuffix = idParam ? `-${idParam}` : '';
+        const filename = `${grade}-${subject}-${dateString}${idSuffix}.pdf`;
         
         // Create date-based subdirectory within download directory
         const dateDir = path.join(downloadDir, dateString);
@@ -282,7 +286,11 @@ async function downloadPDFAlternative(page, grade, subject, downloadDir) {
         // Generate filename and create date-based subdirectory
         const currentDate = new Date();
         const dateString = currentDate.toISOString().split('T')[0];
-        const filename = `${grade}-${subject}-${dateString}.pdf`;
+        // Append id from current page URL at the end of file name
+        const urlObj = new URL(page.url());
+        const idParam = urlObj.searchParams.get('id');
+        const idSuffix = idParam ? `-${idParam}` : '';
+        const filename = `${grade}-${subject}-${dateString}${idSuffix}.pdf`;
         
         // Create date-based subdirectory within download directory
         const dateDir = path.join(downloadDir, dateString);
@@ -378,7 +386,11 @@ async function extractAndDownloadPDF(page, grade, subject, downloadDir) {
             // Generate filename and create date-based subdirectory
             const currentDate = new Date();
             const dateString = currentDate.toISOString().split('T')[0];
-            const filename = `${grade}-${subject}-${dateString}.pdf`;
+            // Append id from current page URL at the end of file name
+            const urlObj = new URL(page.url());
+            const idParam = urlObj.searchParams.get('id');
+            const idSuffix = idParam ? `-${idParam}` : '';
+            const filename = `${grade}-${subject}-${dateString}${idSuffix}.pdf`;
             
             // Create date-based subdirectory within download directory
             const dateDir = path.join(downloadDir, dateString);
