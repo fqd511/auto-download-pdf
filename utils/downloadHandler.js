@@ -25,13 +25,15 @@ async function downloadPDF(page, grade, subject, downloadDir) {
         const downloadForm = page.locator('form#dlform');
         await downloadForm.waitFor({ state: 'visible' });
         
-        // Generate filename
+        // Generate filename and create date-based subdirectory
         const currentDate = new Date();
         const dateString = currentDate.toISOString().split('T')[0];
         const filename = `${grade}-${subject}-${dateString}.pdf`;
         
-        await ensureDirectoryExists(downloadDir);
-        const filePath = path.join(downloadDir, filename);
+        // Create date-based subdirectory within download directory
+        const dateDir = path.join(downloadDir, dateString);
+        await ensureDirectoryExists(dateDir);
+        const filePath = path.join(dateDir, filename);
         
         // Preferred Path: Directly replicate the POST request that returns the PDF
         try {
@@ -277,13 +279,15 @@ async function downloadPDFAlternative(page, grade, subject, downloadDir) {
             throw new Error('Response is not valid PDF');
         }
         
-        // Generate filename and save
+        // Generate filename and create date-based subdirectory
         const currentDate = new Date();
         const dateString = currentDate.toISOString().split('T')[0];
         const filename = `${grade}-${subject}-${dateString}.pdf`;
         
-        await ensureDirectoryExists(downloadDir);
-        const filePath = path.join(downloadDir, filename);
+        // Create date-based subdirectory within download directory
+        const dateDir = path.join(downloadDir, dateString);
+        await ensureDirectoryExists(dateDir);
+        const filePath = path.join(dateDir, filename);
         
         // Save the PDF file
         await fs.writeFile(filePath, buffer);
@@ -371,13 +375,15 @@ async function extractAndDownloadPDF(page, grade, subject, downloadDir) {
                 timeout: 30000
             });
             
-            // Generate filename and save
+            // Generate filename and create date-based subdirectory
             const currentDate = new Date();
             const dateString = currentDate.toISOString().split('T')[0];
             const filename = `${grade}-${subject}-${dateString}.pdf`;
             
-            await ensureDirectoryExists(downloadDir);
-            const filePath = path.join(downloadDir, filename);
+            // Create date-based subdirectory within download directory
+            const dateDir = path.join(downloadDir, dateString);
+            await ensureDirectoryExists(dateDir);
+            const filePath = path.join(dateDir, filename);
             
             const buffer = Buffer.from(response.data);
             await fs.writeFile(filePath, buffer);
