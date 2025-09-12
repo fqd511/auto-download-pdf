@@ -46,8 +46,8 @@ async function main() {
         // Launch browser
         log.info('Launching browser...');
         browser = await chromium.launch({ 
-            headless: false, // Set to true for headless mode
-            slowMo: 50 // Add delay between actions for debugging
+            headless: true, // Set to true for headless mode
+            slowMo: 10 // Add delay between actions for debugging
         });
         
         context = await browser.newContext({
