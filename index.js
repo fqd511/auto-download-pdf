@@ -25,7 +25,7 @@ async function main() {
         log.info('=== Start task: auto download PDFs ===');
         
         // Validate environment variables
-        const username = process.env.USERNAME;
+        const username = process.env.USERNAME1;
         const password = process.env.PASSWORD;
         const loginUrl = process.env.LOGIN_URL;
         const downloadDir = process.env.DOWNLOAD_DIR || './downloads';
