@@ -273,7 +273,7 @@ async function downloadPDFAlternative(page, grade, subject, downloadDir) {
                 'Accept': 'application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
             },
             responseType: 'arraybuffer',
-            timeout: 30000,
+            timeout: 60000,
             maxRedirects: 5
         });
         
@@ -380,7 +380,7 @@ async function extractAndDownloadPDF(page, grade, subject, downloadDir) {
                     'Referer': page.url()
                 },
                 responseType: 'arraybuffer',
-                timeout: 30000
+                timeout: 60000
             });
             
             // Generate filename and create date-based subdirectory

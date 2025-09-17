@@ -51,7 +51,7 @@ async function performLogin(page, username, password) {
             try {
                 await page.locator('a:has-text("我的帳戶"), a:has-text("登出")').first().waitFor({ 
                     state: 'visible', 
-                    timeout: 3000 
+                    timeout: 6000 
                 });
                 log.debug('Confirmed login by account UI');
             } catch (e) {
