@@ -47,7 +47,7 @@ async function main() {
         log.info('Launching browser...');
         browser = await chromium.launch({ 
             headless: false, // Set to true for headless mode
-            slowMo: 10 // Add delay between actions for debugging
+            slowMo: 100 // Add delay between actions for debugging
         });
         
         context = await browser.newContext({
@@ -108,6 +108,8 @@ async function main() {
                     successCount++;
                 }
                 
+                // Wait before next iteration to avoid rate limiting
+                await page.waitForTimeout(20000); // Wait before next iteration
             } catch (error) {
                 log.error(`Error processing ${grade}-${subject}:`, error?.message || error);
                 skipCount++;
